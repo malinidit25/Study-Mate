@@ -1,0 +1,144 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-success: var(--success);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --font-sans: "Figtree", system-ui, sans-serif;
+  --font-serif: "Young Serif", Georgia, serif;
+  --shadow-card: var(--shadow-card);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.966 0.004 230);
+  --foreground: oklch(0.255 0.06 265);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.255 0.06 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.255 0.06 265);
+  --primary: oklch(0.47 0.08 183);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.94 0.01 240);
+  --secondary-foreground: oklch(0.255 0.06 265);
+  --muted: oklch(0.94 0.008 240);
+  --muted-foreground: oklch(0.52 0.03 260);
+  --accent: oklch(0.92 0.15 100);
+  --accent-foreground: oklch(0.32 0.06 95);
+  --destructive: oklch(0.53 0.2 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --success: oklch(0.53 0.14 148);
+  --border: oklch(0.9 0.012 245);
+  --input: oklch(0.9 0.012 245);
+  --ring: oklch(0.47 0.08 183);
+  --chart-1: oklch(0.47 0.08 183);
+  --chart-2: oklch(0.92 0.15 100);
+  --chart-3: oklch(0.255 0.06 265);
+  --chart-4: oklch(0.53 0.14 148);
+  --chart-5: oklch(0.53 0.2 27);
+  --sidebar: oklch(0.255 0.06 265);
+  --sidebar-foreground: oklch(0.94 0.012 245);
+  --sidebar-muted: oklch(0.74 0.035 250);
+  --sidebar-primary: oklch(0.92 0.15 100);
+  --sidebar-primary-foreground: oklch(0.32 0.06 95);
+  --sidebar-accent: oklch(1 0 0 / 7%);
+  --sidebar-accent-foreground: oklch(0.94 0.012 245);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.92 0.15 100);
+  --shadow-card: 0 1px 2px oklch(0.255 0.06 265 / 5%), 0 8px 24px -12px oklch(0.255 0.06 265 / 15%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+@layer base {
+  body { font-family: var(--font-sans); line-height: 1.55; }
+  h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; }
+}
+
+@utility cite-chip {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 500;
+  white-space: normal;
+}
+
+.study-prose { line-height: 1.65; }
+.study-prose h2 { font-size: 1.35rem; margin: 1.2em 0 0.4em; }
+.study-prose h3 { font-size: 1.1rem; margin: 1em 0 0.3em; }
+.study-prose p { margin: 0.5em 0; }
+.study-prose ul, .study-prose ol { padding-left: 1.3em; margin: 0.4em 0; }
+.study-prose ul { list-style: disc; }
+.study-prose ol { list-style: decimal; }
+.study-prose li { margin: 0.2em 0; }
+.study-prose strong { font-weight: 600; }
+.study-prose code { background: var(--muted); padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+.study-prose > :first-child { margin-top: 0; }
